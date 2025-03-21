@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile - Student Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Student Portal</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="profile">
+            <h2>Your Profile</h2>
+            <h6> double tap to edit profile</h6>
+            <p><strong>Name:</strong> <span id="studentName"></span></p>
+            <p><strong>Email:</strong> <span id="studentEmail"></span></p>
+            <p><strong>Enrollment ID:</strong> <span id="studentID"></span></p>
+
+            <!-- Button to Edit Profile -->
+            <button id="editProfileBtn">Edit Profile</button>
+        
+        </section>
+
+        <!-- Edit Profile Form (Initially hidden) -->
+        <section class="edit-profile-form" id="editProfileSection" style="display:none;">
+            <h2>Edit Profile</h2>
+            <form id="editProfile">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" value="John Doe">
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" value="johndoe@example.com">
+
+                <label for="enrollmentID">Enrollment ID:</label>
+                <input type="text" id="enrollmentID" name="enrollmentID" value="123456789">
+
+                <button type="button" id="saveProfileBtn">Save Changes</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Student Portal. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Get references to the elements
+        const editProfileBtn = document.getElementById('editProfileBtn');
+        const editProfileSection = document.getElementById('editProfileSection');
+        const studentName = document.getElementById('studentName');
+        const studentEmail = document.getElementById('studentEmail');
+        const studentID = document.getElementById('studentID');
+        const saveProfileBtn = document.getElementById('saveProfileBtn');
+
+        // When the 'Edit Profile' button is clicked, show the edit form
+        editProfileBtn.addEventListener('click', () => {
+            editProfileSection.style.display = 'block'; // Show edit form
+            studentName.style.display = 'none';        // Hide name
+            studentEmail.style.display = 'none';       // Hide email
+            studentID.style.display = 'none';          // Hide enrollment ID
+            editProfileBtn.style.display = 'none';     // Hide edit button
+        });
+
+        // When 'Save Changes' button is clicked, save the new data (simulated)
+        saveProfileBtn.addEventListener('click', () => {
+            const updatedName = document.getElementById('name').value;
+            const updatedEmail = document.getElementById('email').value;
+            const updatedEnrollmentID = document.getElementById('enrollmentID').value;
+
+            // Update the displayed profile data
+            studentName.textContent = updatedName;
+            studentEmail.textContent = updatedEmail;
+            studentID.textContent = updatedEnrollmentID;
+
+            // Hide the edit form and show the updated profile
+            editProfileSection.style.display = 'none';
+            studentName.style.display = 'block';
+            studentEmail.style.display = 'block';
+            studentID.style.display = 'block';
+            editProfileBtn.style.display = 'block'; // Show edit button again
+        });
+    </script>
+</body>
+</html>
